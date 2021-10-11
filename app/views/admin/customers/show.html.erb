@@ -1,0 +1,34 @@
+<h2><%= @customer.name %>さんの会員詳細</h2>
+<table>
+  <thead></thead>
+  <tbody>
+    <tr>
+      <td><%= @customer.id %></td>
+    </tr>
+    <tr>
+      <td><%= @customer.first_name %><%= customer.last_name %></td>
+    </tr>
+    <tr>
+      <td><%= @customer.postal.code %></td>
+    </tr>
+    <tr>
+      <td><%= @customer.address %></td>
+    </tr>
+    <tr>
+      <td><%= @customer.telphone %></td>
+    </tr>
+    <tr>
+      <td><%= @customer.email %></td>
+    </tr>
+    <tr>
+      <td>
+        <% if @customrer.is_active == true %>
+          有効
+        <% else %>
+          退会
+      <% end %>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<%= link_to '編集する' admin_customer_path, method: :get %>

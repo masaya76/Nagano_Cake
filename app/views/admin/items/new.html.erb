@@ -1,0 +1,60 @@
+<h2>商品新規登録</h2>
+<%= form_with model:@item, url: admin_items_path, method: :post, local:true do |f| %>
+  <table>
+    <thead></thead>
+      <tbody>
+        <tr>
+          <td>
+            <span>商品画像</span>
+          </td>
+          <td>
+            <%= f.attachment_field :image %>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <span>商品名</span>
+          </td>
+          <td>
+            <%= f.text_field :name %>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <span>商品説明</span>
+          </td>
+          <td>
+            <%= f.text_area :introduction %>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <span>ジャンル</span>
+          </td>
+          <td>
+            <%= f.select :genre_id, options_from_collection_for_select(Genre.all, :id, :name), {include_blank: '選択してください'} %>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <span>税抜価格</span>
+          </td>
+          <td>
+            <%= f.text_field :price, placeholder: "Sample Text"%>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <span>販売ステータス</span>
+          </td>
+          <td>
+            <%= f.radio_button :is_active, "sale" %>
+            <%= f.label :is_active, "販売中" %>
+            <%= f.radio_button :is_active, "stop_selling" %>
+            <%= f.label :is_active,  "販売停止中" %>
+          </t>
+        </tr>
+      </tbody>
+    </table>
+  <%= f.submit '新規登録' %>
+<% end %>
