@@ -4,5 +4,8 @@ class HomesController < ApplicationController
     @genres = Genre.all
     @items = Item.all
   end
+  
+  def about
+  end
 
 end

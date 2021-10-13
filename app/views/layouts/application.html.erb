@@ -10,8 +10,17 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-
   <body>
+    <table>
+      <thead>
+        <th>
+        </th>
+        <th></th>
+      </thead>
+    </table>
     <%= yield %>
   </body>
 </html>
+
+
+<%= link_to 'about', home_about_path %>

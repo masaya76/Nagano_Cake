@@ -1,23 +1,28 @@
 require 'test_helper'
 
-class Public::CustomersControllerTest < ActionDispatch::IntegrationTest
+class CustomersControllerTest < ActionDispatch::IntegrationTest
   test "should get show" do
-    get public_customers_show_url
+    get customers_show_url
     assert_response :success
   end
 
   test "should get edit" do
-    get public_customers_edit_url
+    get customers_edit_url
+    assert_response :success
+  end
+
+  test "should get update" do
+    get customers_update_url
     assert_response :success
   end
 
   test "should get top" do
-    get public_customers_top_url
+    get customers_top_url
     assert_response :success
   end
 
   test "should get withdrawal" do
-    get public_customers_withdrawal_url
+    get customers_withdrawal_url
     assert_response :success
   end
 
