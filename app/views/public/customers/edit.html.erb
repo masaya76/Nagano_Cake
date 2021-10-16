@@ -1,2 +1,51 @@
-<h1>Public::Customers#edit</h1>
-<p>Find me in app/views/public/customers/edit.html.erb</p>
+<h6 class ="title">
+  会員情報編集
+</h6>
+<div class = "container">
+  <div class="row">
+    <div class = "col-lg-8">
+      <table>
+        <%= form_with model:@customer, url: public_customers_mypage_path, local:true do |f| %>|
+          <thead></thead>
+          <tbody>
+            <tr>
+              <td>氏名</td>
+              <td>(性)<%= f.text_field :first_name, autofocus: true, autocomplete: "first_name" %></td>
+              <td>(名)<%= f.text_field :last_name, autocomplete: "last_name" %></td>
+            </tr>
+            <tr>
+              <td>フリガナ</td>
+              <td>(セイ)<%= f.text_field :first_name_kana, autocomplete: "first_name_kana" %></td>
+              <td>(メイ)<%= f.text_field :last_name_kana, autocomplete: "last_name_kana" %></td>
+            </tr>
+            　<td>郵便番号(ハイフンなし)</td>
+              <td><%= f.text_field :postal_code, autocomplete: "postal_code" %></td>
+            <tr>
+              <td>住所</td>
+              <td><%= f.text_field :address, autocomplete: "address" %></td>
+            <tr>
+              <td>電話番号(ハイフンなし)</td>
+              <td><%= f.text_field :telephone_number, autocomplete: "telephone_number" %></td>
+            </tr>
+            <tr>
+              <td>メールアドレス</td>
+              <td><%= f.email_field :email, autocomplete: "email" %></td>
+            </tr>
+            <tr>
+              <td></td>
+              <td>
+                <div class="submit">
+                  <%= f.submit "新規作成" %>
+                </div>
+              </td>
+              <td>
+                <%= link_to '退会する', public_customers_top_path %>
+              </td>
+            </tr>
+          </tbody>
+        <% end %>
+      </table>
+    </div>
+  </div>
+</div>
+

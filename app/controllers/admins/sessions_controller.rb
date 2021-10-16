@@ -27,4 +27,13 @@ class Admins::SessionsController < Devise::SessionsController
   # def configure_sign_in_params
   #   devise_parameter_sanitizer.permit(:sign_in, keys: [:attribute])
   # end
+
+  def reject_inactive_customer
+    @customer = current_customer
+    if @customer
+      if @customer.active_password? && !@customer.is_active
+        redirect_to new_user_session_path
+      end
+    end
+  end
 end

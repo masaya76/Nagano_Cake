@@ -9,18 +9,34 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+    <div class = "transition-item">
+      <% if customer_signed_in? %>
+        <tr>
+          <th><%= link_to 'マイページ', public_customers_mypage_path %></th>
+          <th><%= link_to '商品一覧', public_items_path %></th>
+          <th><%= link_to 'カート', public_cart_items_path %></th>
+          <th><%= link_to 'ログアウト', destroy_customer_session_path, method: :delete %></th>
+        </tr>
+        <% elsif admin_signed_in? %>
+        <tr>
+          <th><%= link_to '商品一覧', admin_items_path %></th>
+          <th><%= link_to '会員一覧', admin_customers_path %></th>
+          <th><%= link_to '注文履歴一覧', admin_root_path %></th>
+          <th><%= link_to 'ジャンル一覧', admin_genres_path %></th>
+          <th><%= link_to 'ログアウト', destroy_admin_session, mathod: :delete %></th>
+        </tr>
+        <% else %>
+        <tr>
+          <th><%= link_to 'About', home_about_path %></th>
+          <th><%= link_to '商品一覧', admin_items_path %></th>
+          <th><%= link_to '新規登録', new_customer_registration_path %></th>
+          <th><%= link_to 'ログイン', customer_session_path %></th>
+        </tr>
+      <% end %>
+    </div>
   </head>
-  <body>
-    <table>
-      <thead>
-        <th>
-        </th>
-        <th></th>
-      </thead>
-    </table>
+  <main>
     <%= yield %>
-  </body>
+  </main>
 </html>
-
-
-<%= link_to 'about', home_about_path %>
