@@ -33,13 +33,13 @@
     <tbody>
       <%= @addresses.each do |address| %>
         <tr>
-          <th><%= address.postal_code %></th>
-          <th><%= address.address %></th>
-          <th><%= address.name %></th>
-          <th>
-            <%= link_to '編集する', edit_public_address(address_id) %>
+          <td><%= address.postal_code %></td>
+          <td><%= address.address %></td>
+          <td><%= address.name %></td>
+          <td>
+            <%= link_to '編集する', edit_public_address_path(address.id) %>
             <%= link_to '削除する', public_address_path(address.id), method: :delete %>
-          </th>
+          </td>
         </tr>
       <% end %>
     </tbody>
