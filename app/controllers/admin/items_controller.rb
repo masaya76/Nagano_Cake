@@ -11,7 +11,7 @@ class Admin::ItemsController < ApplicationController
   def index
     @item = Item.new
     @items = Item.all
-
+    @genres = Genre.all
   end
 
   def create
@@ -27,9 +27,12 @@ class Admin::ItemsController < ApplicationController
 
   def update
     @item = Item.find(params[:id])
-    @item.update!(item_params)
+    @item.update
     redirect_to admin_item_path(params[:id])
   end
+  
+  def serch
+    
 
 private
 
