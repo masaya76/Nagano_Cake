@@ -1,2 +1,50 @@
-<h1>Public::Items#show</h1>
-<p>Find me in app/views/public/items/show.html.erb</p>
+<div class = "container">
+  <div class = "row">
+    <div class = "col-lg-2">
+      <table>
+        <thead>
+          <tr>
+            <th>ジャンル検索</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @genres.each do |genre| %>
+            <tr>
+              <td><%= link_to genre.name, public_items_search_path(genre.id) %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+    <div class ="col-lg-10">
+      <span class = "show_iamge"></span>
+        <%= @item.image %>
+      </span>
+      <table>
+        <thead>
+          <tr>
+            <th>
+              <h5><%= @item.name %></h5>
+            </th>
+          </tr>
+          <tr>
+            <th><%= @item.introduction %></th>
+          </tr>
+          <tr>
+            <th>￥<%= @item.price %>(税込)</th>
+          </tr>
+          <tr>
+            <th>
+              <%= form_with model:@cart_item, url:public_cart_items_path, method: :post, local:true do |cart_item| %>
+                <%= cart_item.select :amount, *[1..10] %>
+                <%= cart_item.hidden_field :item_id, :value => @item.id %>
+                <%= cart_item.submit 'カートに入れる' %>
+              <% end %>
+            </th>
+          </tr>
+        </thead>
+      </table>s
+    </div>
+  </div>
+</div>
+

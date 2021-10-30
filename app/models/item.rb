@@ -1,6 +1,7 @@
 class Item < ApplicationRecord
 
- belongs_to :genre
- attachment :image
- 
+  has_many :cart_items, dependent: :destroy
+  belongs_to :genre
+  attachment :image
+
 end

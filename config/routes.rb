@@ -14,18 +14,19 @@ Rails.application.routes.draw do
       get "customers/top" => "customers#top"
       get "customers/mypage" => "customers#mypage"
       patch '/customers/withdrawal', to: 'customer#update'
-      
+
     resources :cart_items, only: [:index, :update, :destroy, :create]
-      delete '/cart_items', to: 'cart_item#destroy_all'
-      
+      delete '/cart_items_destroy_all', to: 'cart_item#destroy_all'
+
     resources :orders, only: [:top, :update, :index, :show]
       get "orders/top" => "orders#top"
-      post 'orders/confirm', to: 'orser#confirm' 
-      
+      post 'orders/confirm', to: 'orser#confirm'
+
     resources :addresses, only: [:index, :edit, :create, :update, :destroy]
-    
+
+    get "items/search" => "items#search"
     resources :items, only: [:index, :show]
-    get "items/serch" => "items#serch"
+
    end
 
   devise_for :admins, controllers: {

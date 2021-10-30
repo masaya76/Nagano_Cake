@@ -31,8 +31,6 @@ class Admin::ItemsController < ApplicationController
     redirect_to admin_item_path(params[:id])
   end
   
-  def serch
-  end
 
 private
 
