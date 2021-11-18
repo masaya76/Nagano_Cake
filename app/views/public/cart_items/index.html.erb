@@ -1,9 +1,9 @@
 <h6>ショッピングカート</h6>
-<span class="deleyte_all"><%= button_to "カートを空にする", public_cart_items_destroy_all_path, method: :delete %></span>
+<span><%= button_to "カートを空にする", public_cart_items_destroy_all_path, method: :delete %></span>
 <div class="container">
   <div class="row">
     <div class="col-lg-10">
-      <table>
+      <table border="2" style="border-collapse: collapse">
         <thead>
           <tr>
             <th>商品名</th>
@@ -14,22 +14,34 @@
           </tr>
         </thead>
         <tbody>
+          <% sum = 0 %>
           <% @cart_items.each do |cart_item| %>
             <tr>
               <td><%= cart_item.item.image  %><%= cart_item.item.name %></td>
-              <td><%= (cart_item.item.price * @tax).floor %></td>
+              <td><%= cart_item.item.with_tax_price %></td>
               <td>
-                <%= form_with model:@cart_item, url:public_cart_item_path(cart_item.id), method: :patch, local:true do |cart_item| %>
-                  <%= cart_item.select :amount, *[1..10] %>
-                  <%= cart_item.submit '変更' %>
+                <%= form_with model: cart_item, url:public_orders_confirm_path, method: :confirm, local:true do |f| %>
+                  <%= f.select :amount, *[1..10] %>
+                  <%= f.submit '変更' %>
                 <% end %>
               </td>
-              <td></td>
-              <td></td>
+              <td><%= cart_item.subtotal %></td>
+              <% sum += cart_item.subtotal %>
+              <td><%= link_to '削除する', public_cart_item_path(cart_item.id), method: :delete %></td>
             </tr>
           <% end %>
         </tbody>
+      </div>
+      <div calss="col-lg-12">
+        <span class="kaimono">
+          <%= link_to '買い物を続ける', root_path %>
+        </span>
+        <div class="totel-money">
+          <span>合計金額</span>
+          <p><%= sum %></p>
+        </div>
       </table>
+      <span><%= link_to '情報入力に進む', new_public_order_path %></span>
     </div>
   </div>
 </div>

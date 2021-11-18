@@ -1,22 +1,14 @@
 <div class = "container">
   <div class = "row">
-    <div class = "col-lg-4">
-      <table>
-        <thead>
-          <tr>
-            <th>ジャンル検索</th>
-          </tr>
-        </thead>
-        <tbody>
-          <% @genres.each do |genre| %>
-            <tr>
-              <td>
-                <%= genre.name %>
-              </td>
-            </tr>
-          <% end %>
-        </tbody>
-      </table>
+    <div class = "col-lg-2" >
+      <div>
+        <h6>ジャンル検索</h6>
+      </div>
+      <div>
+        <% @genres.each do |genre| %>
+          <%= link_to genre.name, public_items_search_path(genre_id: genre.id) %></br>
+        <% end %>
+      </div>
     </div>
     <div class = "col-lg-6">
       <p>ようこそ、ながのCAKEへ！<br>
@@ -27,11 +19,15 @@
     </div>
   </div>
   <div class = "row">
-    <div class = "col-lg-8">
-      <h2>新着商品</h2>
-      <% @items.each do |item| %>
-      
-      <% end %>
-    </div>
+    <h2>新着商品</h2>
+    <% @items.each do |item| %>
+      <div class="col-8-flex flex-lg-wrap" >
+        <%= link_to(public_item_path(item.id), class: 'list-content') do %>
+        <p><%= attachment_image_tag item, :image, :fill, 100, 100 %> </p>
+        <p><%= item.name %></p>
+        <p>￥<%= item.price %></p>
+        <% end %>
+      </div>
+    <% end %>
   </div>
 </div>

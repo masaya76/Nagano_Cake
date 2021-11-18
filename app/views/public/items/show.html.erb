@@ -18,7 +18,7 @@
     </div>
     <div class ="col-lg-10">
       <span class = "show_iamge"></span>
-        <%= @item.image %>
+        <%= attachment_image_tag @item, :image, :fill, 100, 100 %>
       </span>
       <table>
         <thead>
@@ -31,7 +31,7 @@
             <th><%= @item.introduction %></th>
           </tr>
           <tr>
-            <th>￥<%= @item.price %>(税込)</th>
+            <th>￥<%= @item.with_tax_price %>(税込)</th>
           </tr>
           <tr>
             <th>

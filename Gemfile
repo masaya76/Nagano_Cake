@@ -76,3 +76,7 @@ group :development do
   gem 'better_errors'
   gem 'binding_of_caller'
 end
+
+gem "enum_help"
+
+gem 'pry-rails'

@@ -13,14 +13,15 @@ Rails.application.routes.draw do
     resources :customers, only: [:edit, :update]
       get "customers/top" => "customers#top"
       get "customers/mypage" => "customers#mypage"
-      patch '/customers/withdrawal', to: 'customer#update'
+      patch "/customers/withdrawal" => "customer#withdrawal"
 
     resources :cart_items, only: [:index, :update, :destroy, :create]
-      delete '/cart_items_destroy_all', to: 'cart_item#destroy_all'
+      delete '/cart_items_destroy_all', to: 'cart_items#destroy_all'
 
-    resources :orders, only: [:top, :update, :index, :show]
-      get "orders/top" => "orders#top"
-      post 'orders/confirm', to: 'orser#confirm'
+    post 'orders/confirm', to: 'orders#confirm'
+    get "orders/top" => "orders#top"
+    resources :orders, only: [:new, :create, :index, :show]
+
 
     resources :addresses, only: [:index, :edit, :create, :update, :destroy]
 

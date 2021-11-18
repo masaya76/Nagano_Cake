@@ -1,2 +1,52 @@
-<h1>Public::Orders#new</h1>
-<p>Find me in app/views/public/orders/new.html.erb</p>
+<h6 class= "area">注文情報入力</h6>
+<div calss ="order">
+  <%= form_with model:@order, url:public_orders_confirm_path, local:true do |f| %>
+    <div class ="order-area">
+      <h6>支払方法</h6>
+      <P>
+        <%= f.radio_button :peyment_method, Order.peyment_methods.key(0) %>
+        <%= f.label :peyment_method, Order.peyment_methods_i18n[:credit_card] %>
+      </P>
+      <P>
+        <%= f.radio_button :peyment_method, Order.peyment_methods.key(1) %>
+        <%= f.label :peyment_method, Order.peyment_methods_i18n[:transfer]%>
+      </P>
+    </div>
+    <div>
+      <h6>お届け先</h6>
+      <div>
+        <%= f.radio_button :select_address, :main %>
+        <%= f.label :address, "ご自身の住所", {value: :address, style: "display: inline-block;"} %>
+        <p>〒<%= @customer.postal_code %>　<%= @customer.address %> <%= @customer.last_name %><%= @customer.first_name %></p>
+
+      </div>
+      <div>
+        <%= f.radio_button :select_address, :yours %>
+        <%= f.label :address, "登録済住所から選択", cd new
+        
+        <p><%= f.select :address_id, options_from_collection_for_select(current_customer.addresses, :id, :full_address) %></p>
+      </div>
+      <div>
+        <%= f.radio_button :select_address, :new %>
+        <%= f.label :address, "新しいお届け先", {value: :address, style: "display: inline-block;"} %>
+        <table>
+          <thead>
+            <tr>
+              <th>郵便番号(ハイフンなし)</th>
+              <th><%= f.text_field :postal_code %></th>
+            </tr>
+            <tr>
+              <th>住所</th>
+              <th><%= f.text_field :address %></th>
+            </tr>
+            <tr>
+              <th>宛名</th>
+              <th><%= f.text_field :name %></th>
+            </tr>
+          </thead>
+        </table>
+      </div>
+      <%= f.submit '確認画面へ進む' %>
+    </div>
+  <% end %>
+</div>

@@ -1,7 +1,7 @@
 <div class = "container">
   <div class = "row">
     <div class = "col-lg-2">
-      <table>
+      <table style="border-style:solid ; border-width:1px ;">
         <thead>
           <tr>
             <th>ジャンル検索</th>
@@ -18,8 +18,8 @@
     </div>
     <div class ="col-lg-10">
       <h4><%= @genre.name %>一覧(全<%= @items.count %>件)</h4>
-      <%= @items.each do |item| %>
-        <p><%= item.image %></p>
+      <% @items.each do |item| %>
+        <p><%= attachment_image_tag item, :image, :fill, 100, 100 %></p>
         <p><%= item.name %></p>
         <p>￥<%= item.price %></p>
       <% end %>

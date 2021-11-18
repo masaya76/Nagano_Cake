@@ -1,4 +1,4 @@
-<h2><%= @customer.name %>さんの会員詳細</h2>
+<h2><%= @customer.full_name %>さんの会員詳細</h2>
 <table>
   <thead></thead>
   <tbody>
@@ -6,23 +6,23 @@
       <td><%= @customer.id %></td>
     </tr>
     <tr>
-      <td><%= @customer.first_name %><%= customer.last_name %></td>
+      <td><%= @customer.first_name_kana %></td>
     </tr>
     <tr>
-      <td><%= @customer.postal.code %></td>
+      <td><%= @customer.postal_code %></td>
     </tr>
     <tr>
       <td><%= @customer.address %></td>
     </tr>
     <tr>
-      <td><%= @customer.telphone %></td>
+      <td><%= @customer.telephone_number %></td>
     </tr>
     <tr>
       <td><%= @customer.email %></td>
     </tr>
     <tr>
       <td>
-        <% if @customrer.is_active == true %>
+        <% if @customer.is_active == true %>
           有効
         <% else %>
           退会
@@ -31,4 +31,5 @@
     </tr>
   </tbody>
 </table>
-<%= link_to '編集する' admin_customer_path, method: :get %>
+<%= link_to '編集する', edit_admin_customer_path(@customer.id) %>
+

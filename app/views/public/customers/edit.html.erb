@@ -10,13 +10,13 @@
           <tbody>
             <tr>
               <td>氏名</td>
-              <td>(性)<%= f.text_field :first_name, autofocus: true, autocomplete: "first_name" %></td>
-              <td>(名)<%= f.text_field :last_name, autocomplete: "last_name" %></td>
+              <td><%= f.text_field :first_name, autofocus: true, autocomplete: "first_name" %></td>
+              <td><%= f.text_field :last_name, autocomplete: "last_name" %></td>
             </tr>
             <tr>
               <td>フリガナ</td>
-              <td>(セイ)<%= f.text_field :first_name_kana, autocomplete: "first_name_kana" %></td>
-              <td>(メイ)<%= f.text_field :last_name_kana, autocomplete: "last_name_kana" %></td>
+              <td><%= f.text_field :first_name_kana, autocomplete: "first_name_kana" %></td>
+              <td>)<%= f.text_field :last_name_kana, autocomplete: "last_name_kana" %></td>
             </tr>
             　<td>郵便番号(ハイフンなし)</td>
               <td><%= f.text_field :postal_code, autocomplete: "postal_code" %></td>

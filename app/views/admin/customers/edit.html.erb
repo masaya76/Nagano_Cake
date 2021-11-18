@@ -1,5 +1,5 @@
 <h2><%= @customer.full_name %>さんの会員情報編集</h2>
-<%= form_with model:@customer, url: admin_customer_path, method: :get, local true do |customer| %>
+<%= form_with model:@customer, url:admin_customer_path, method: :patch, local:true do |customer| %>
 　<table>
     <thead></thead>
     <tbody>
@@ -36,13 +36,13 @@
       <tr>
         <td>会員ステータス</td>
         <td>
-          <%= customer.radio_button, :is_active, "valid" %>
+          <%= customer.radio_button :is_active, "true" %>
           <%= customer.label :is_active, "有効" %>
-          <%= customer.radio_button, :is_active, "withdrawal" %>
+          <%= customer.radio_button :is_active, "false" %>
           <%= customer.label :is_active, "退会" %>
         </td>
       </tr>
     </tbody>
   </table>
-  <%= customer.submit '保存を変更'
+  <%= customer.submit '保存を変更' %>
 <% end %>

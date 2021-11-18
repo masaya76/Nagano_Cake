@@ -1,8 +1,7 @@
 <h4>マイページ</h4>
-<span>登録情報
-  <%= link_to '編集する', edit_public_customer_path(current_customer) %>
-</span>
-<table>
+<strong>登録情報</strong>
+<span><%= link_to '編集する', edit_public_customer_path(current_customer) %></span>
+<table border="2" style="border-collapse: collapse">
   <thead>
     <tr>
       <th>氏名</th>
@@ -29,13 +28,12 @@
       <th><%= @customer.email %></th>
     </tr>
   </thead>
-  <tbodty>
-    <tr>
-      <td>配送先</td>
-      <td><%= link_to '一覧を見る', public_addresses_path(current_customer) %></td>
-    </tr>
-      <td>注文履歴</td>
-    <td><%= link_to '一覧を見る',  public_cart_items_path(current_customer) %></td>
-    <tr>
-  </tbodty>
 </table>
+<div>
+  <strong>配送先</strong>
+  <apan><%= link_to '一覧を見る', public_addresses_path(current_customer) %></span>
+</div>
+<div>
+  <strong>注文履歴</strong>
+  <span><%= link_to '一覧を見る', public_orders_path(current_customer), method: :get %></span>
+</div>

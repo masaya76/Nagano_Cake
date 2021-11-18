@@ -1,6 +1,6 @@
 <h4>配送先登録/一覧</h4>
 <div class = "area">
-  <table>
+  <table class = "address">
     <thead>
       <%= form_with model:@address, url: public_addresses_path, method: :post, local:true do |f| %>
         <tr>
@@ -21,7 +21,7 @@
   </table>
 </div>
 <div class ="field">
-  <table>
+  <table border="2" style="border-collapse: collapse">
     <thead>
       <tr>
         <th>郵便番号</th>

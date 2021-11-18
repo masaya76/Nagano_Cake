@@ -1,5 +1,7 @@
 class Public::CustomersController < ApplicationController
 
+  before_action :authenticate_customer!,except: [:root_path]
+  
   def mypage
     @customer = current_customer
   end
